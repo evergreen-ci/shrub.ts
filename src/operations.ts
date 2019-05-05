@@ -2,7 +2,7 @@
  * Name and Value pair. Stores the value along with its JSON name.
  */
 class NV<T> {
-  value?: T;
+  v?: T; // shorthand for value.
   constructor(public jsonName: string) {}
 }
 

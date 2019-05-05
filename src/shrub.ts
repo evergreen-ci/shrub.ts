@@ -1,1 +1,1 @@
-abstract class EvergreenBuildler {}
+export function replacer() {}

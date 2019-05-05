@@ -9,7 +9,8 @@
     "fix": "gts fix",
     "prepare": "npm run compile",
     "pretest": "npm run compile",
-    "posttest": "npm run check"
+    "posttest": "npm run check",
+    "test": "mocha -r ts-node/register src/**/*.spec.ts"
   },
   "engines": {
     "node": "4.0.0"
@@ -30,9 +31,12 @@
   "devDependencies": {
     "@types/chai": "^4.1.7",
     "@types/mocha": "^5.2.6",
+    "@types/node": "^12.0.0",
     "chai": "^4.2.0",
     "gts": "^1.0.0",
+    "install": "^0.12.2",
     "mocha": "^6.1.4",
+    "npm": "^6.9.0",
     "ts-node": "^8.1.0",
     "typescript": "^3.4.5"
   }
