@@ -24,13 +24,6 @@ export class TaskSpec {
   }
 }
 
-export class Variant {
-  private buildName = new NV<string>('name');
-  private buildDisplayName = new NV<string>('display_name');
-  private batchTimeSecs = new NV<integer>('batchtime');
-  private taskSpecs = new NV<TaskSpec>('tasks');
-}
-
 export class DisplayTaskDefinition {
   private _name = new NV<string>('name');
   private _components = new NV<string[]>('execution_tasks');
@@ -55,3 +48,56 @@ export class DisplayTaskDefinition {
     return this;
   }
 }
+
+interface Expansions {
+  [key: string]: string;
+}
+
+export class Variant {
+  private buildName = new NV<string>('name');
+  private buildDisplayName = new NV<string>('display_name');
+  private batchTimeSecs = new NV<integer>('batchtime');
+  private taskSpecs = new NV<TaskSpec>('tasks');
+  private distroRunOn = new NV<string[]>('run_on');
+  private _expansions = new NV<Expansions>('expansions');
+  private displayTaskSpecs = new NV<DisplayTaskDefinition>('display_tasks');
+
+  getName(): string {
+    return this.buildName.v;
+  }
+
+  displayName(name: string): Variant {
+    this.buildDisplayName.v = name;
+    return this;
+  }
+
+  batchTime(time: integer): Variant {
+    this.batchTimeSecs.v = time;
+    return this;
+  }
+
+  runOn(distro: string): Variant {
+    if (this.distroRunOn.isUndefined()) {
+      this.distroRunOn.v = [];
+    }
+    this.distroRunOn.v.push(distro);
+    return this;
+  }
+
+  expansion(key: string, value: string): Variant {
+    if (this._expansions.isUndefined()) {
+      this._expansions.v = {};
+    }
+    this._expansions.v[key] = value;
+    return this;
+  }
+
+  expansions(exps: Expansions): Variant {
+    for (const k of Object.getOwnPropertyNames(exps)) {
+      this.expansion(k, exps[k]);
+    }
+    return this;
+  }
+}
+
+
