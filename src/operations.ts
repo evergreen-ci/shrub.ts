@@ -32,3 +32,5 @@ export class CmdExec extends BaseCmdExec {
 export class CmdExecShell extends BaseCmdExec {
   script = new NV<string>('script');
 }
+
+export type Operation = CmdExec | CmdExecShell;

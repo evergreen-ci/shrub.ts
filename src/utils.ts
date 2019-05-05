@@ -9,10 +9,16 @@ export class NV<T> {
 /**
  * Discard undefined properties when serializing an NV instances.
  */
-export function serializeReplacer(key: string, value: any) {
+export function handleOptional(key: string, value: any) {
   // Don't include undefined properties.
   if (value instanceof NV && value.v === undefined) {
     return undefined;
   }
   return value;
 }
+
+// JS can't distinguish between ints and floats but Evergreen does, so we
+// provide visual hints. The integer/float type difference is not enforced
+// by typescript.
+export type integer = number;
+export type float = number;
