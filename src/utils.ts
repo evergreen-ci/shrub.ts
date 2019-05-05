@@ -4,6 +4,10 @@
 export class NV<T> {
   v?: T; // shorthand for value.
   constructor(public jsonName: string) {}
+
+  isUndefined(): boolean {
+    return typeof this.v === undefined;
+  }
 }
 
 /**
@@ -11,7 +15,7 @@ export class NV<T> {
  */
 export function handleOptional(key: string, value: any) {
   // Don't include undefined properties.
-  if (value instanceof NV && value.v === undefined) {
+  if (value instanceof NV && value.isUndefined()) {
     return undefined;
   }
   return value;

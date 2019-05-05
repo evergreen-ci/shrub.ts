@@ -1,7 +1,6 @@
+import 'mocha';
 import { CmdExec } from './operations';
 import { handleOptional } from './utils';
-
-import 'mocha';
 
 describe('CmdExec', () => {
   it('should have required properties', () => {
