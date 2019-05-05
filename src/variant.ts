@@ -33,19 +33,17 @@ export class DisplayTaskDefinition {
     return this;
   }
 
-  executionTask(taskName: string): DisplayTaskDefinition {
+  executionTask(taskName: string): void {
     if (this._components.isUndefined()) {
       this._components.v = [];
     }
     this._components.v.push(taskName);
-    return this;
   }
 
-  executionTasks(taskNames: string[]): DisplayTaskDefinition {
+  executionTasks(taskNames: string[]): void {
     for (const taskName of taskNames) {
       this.executionTask(taskName);
     }
-    return this;
   }
 }
 
@@ -66,37 +64,24 @@ export class Variant {
     return this.buildName.v;
   }
 
-  displayName(name: string): Variant {
-    this.buildDisplayName.v = name;
-    return this;
-  }
-
-  batchTime(time: integer): Variant {
-    this.batchTimeSecs.v = time;
-    return this;
-  }
-
-  runOn(distro: string): Variant {
+  runOn(distro: string): void {
     if (this.distroRunOn.isUndefined()) {
       this.distroRunOn.v = [];
     }
     this.distroRunOn.v.push(distro);
-    return this;
   }
 
-  expansion(key: string, value: string): Variant {
+  expansion(key: string, value: string): void {
     if (this._expansions.isUndefined()) {
       this._expansions.v = {};
     }
     this._expansions.v[key] = value;
-    return this;
   }
 
-  expansions(exps: Expansions): Variant {
+  expansions(exps: Expansions): void {
     for (const k of Object.getOwnPropertyNames(exps)) {
       this.expansion(k, exps[k]);
     }
-    return this;
   }
 }
 

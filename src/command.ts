@@ -14,39 +14,15 @@ interface Parameters {
 type Vars = Parameters;
 
 export class CommandDefinition {
-  private functionName = new NV<string>('func');
-  private displayName = new NV<string>('display_name');
-  private executionType = new NV<ExecutionType>('type');
-  private commandName = new NV<Operation>('command');
-  private timeoutSecs = new NV<integer>('timeout_secs');
+  functionName = new NV<string>('func');
+  displayName = new NV<string>('display_name');
+  executionType = new NV<ExecutionType>('type');
+  commandName = new NV<Operation>('command');
+  timeoutSecs = new NV<integer>('timeout_secs');
+
   private runVariants = new NV<string[]>('variants');
   private parameters = new NV<Parameters>('params');
   private vars = new NV<Vars>('vars');
-
-  func(functionName: string): CommandDefinition {
-    this.functionName.v = functionName;
-    return this;
-  }
-
-  type(executionType: ExecutionType): CommandDefinition {
-    this.executionType.v = executionType;
-    return this;
-  }
-
-  name(displayName: string): CommandDefinition {
-    this.displayName.v = displayName;
-    return this;
-  }
-
-  command(commandName: Operation): CommandDefinition {
-    this.commandName.v = commandName;
-    return this;
-  }
-
-  timeout(timeoutSecs: integer): CommandDefinition {
-    this.timeoutSecs.v = timeoutSecs;
-    return this;
-  }
 
   variant(runVariant: string): CommandDefinition {
     if (this.runVariants.isUndefined()) {
@@ -56,41 +32,36 @@ export class CommandDefinition {
     return this;
   }
 
-  variants(runVariants: string[]): CommandDefinition {
+  variants(runVariants: string[]): void {
     for (const v of runVariants) {
       this.variant(v);
     }
-    return this;
   }
 
-  variable(key: string, value: string): CommandDefinition {
+  variable(key: string, value: string): void {
     if (this.vars.isUndefined()) {
       this.vars.v = {};
     }
     this.vars.v[key] = value;
-    return this;
   }
 
-  variables(vars: Vars): CommandDefinition {
+  variables(vars: Vars): void {
     for (const k of Object.getOwnPropertyNames(vars)) {
       this.variable(k, vars[k]);
     }
-    return this;
   }
 
-  param(key: string, value: string): CommandDefinition {
+  param(key: string, value: string): void {
     if (this.parameters.isUndefined()) {
       this.parameters.v = {};
     }
     this.parameters.v[key] = value;
-    return this;
   }
 
-  params(parameters: Parameters): CommandDefinition {
+  params(parameters: Parameters): void {
     for (const k of Object.getOwnPropertyNames(parameters)) {
       this.param(k, parameters[k]);
     }
-    return this;
   }
 }
 
@@ -103,15 +74,13 @@ export class CommandSequence {
     return c;
   }
 
-  add(cmdDef: CommandDefinition): CommandSequence {
+  add(cmdDef: CommandDefinition): void {
     this.cmdArray.push(cmdDef);
-    return this;
   }
 
-  extend(cmdDefs: CommandDefinition[]): CommandSequence {
+  extend(cmdDefs: CommandDefinition[]): void {
     for (const cmdDef of cmdDefs) {
       this.add(cmdDef);
     }
-    return this;
   }
 }

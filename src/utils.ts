@@ -8,6 +8,14 @@ export class NV<T> {
   isUndefined(): boolean {
     return typeof this.v === 'undefined';
   }
+
+  set(v: T): void {
+    this.v = v;
+  }
+
+  get(): T {
+    return this.v;
+  }
 }
 
 /**
