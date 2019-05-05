@@ -1,10 +1,4 @@
-/**
- * Name and Value pair. Stores the value along with its JSON name.
- */
-class NV<T> {
-  v?: T; // shorthand for value.
-  constructor(public jsonName: string) {}
-}
+import { NV } from "./utils";
 
 export class CmdExec {
   background = new NV<boolean>('background');
