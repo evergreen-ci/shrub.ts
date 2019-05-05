@@ -5,16 +5,12 @@ export class NV<T> {
   v?: T; // "v" is shorthand for "value".
   constructor(public jsonName: string) {}
 
-  isUndefined(): boolean {
-    return typeof this.v === 'undefined';
-  }
-
   set(v: T): void {
     this.v = v;
   }
 
   get(): T {
-    return this.v;
+    return this.v as T;
   }
 }
 
@@ -25,7 +21,7 @@ export class NV<T> {
 function fixupJSONKeyName(key: string, value: any) {
   if (value instanceof NV) {
     // Don't include undefined properties.
-    if (value.isUndefined()) {
+    if (typeof value === 'undefined') {
       return undefined;
     } else {
       return { [value.jsonName]: value.v };

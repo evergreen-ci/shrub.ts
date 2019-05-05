@@ -16,7 +16,7 @@ export class TaskSpec {
   }
 
   distro(d: string): TaskSpec {
-    if (this.distros.isUndefined()) {
+    if (typeof this.distros.v === 'undefined') {
       this.distros.v = [];
     }
     this.distros.v.push(d);
@@ -34,7 +34,7 @@ export class DisplayTaskDefinition {
   }
 
   executionTask(taskName: string): void {
-    if (this._components.isUndefined()) {
+    if (typeof this._components.v === 'undefined') {
       this._components.v = [];
     }
     this._components.v.push(taskName);
@@ -60,19 +60,15 @@ export class Variant {
   private _expansions = new NV<Expansions>('expansions');
   private displayTaskSpecs = new NV<DisplayTaskDefinition>('display_tasks');
 
-  getName(): string {
-    return this.buildName.v;
-  }
-
   runOn(distro: string): void {
-    if (this.distroRunOn.isUndefined()) {
+    if (typeof this.distroRunOn.v === 'undefined') {
       this.distroRunOn.v = [];
     }
     this.distroRunOn.v.push(distro);
   }
 
   expansion(key: string, value: string): void {
-    if (this._expansions.isUndefined()) {
+    if (typeof this._expansions.v === 'undefined') {
       this._expansions.v = {};
     }
     this._expansions.v[key] = value;

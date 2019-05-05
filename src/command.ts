@@ -24,12 +24,11 @@ export class CommandDefinition {
   private parameters = new NV<Parameters>('params');
   private vars = new NV<Vars>('vars');
 
-  variant(runVariant: string): CommandDefinition {
-    if (this.runVariants.isUndefined()) {
+  variant(runVariant: string): void {
+    if (typeof this.runVariants.v === 'undefined') {
       this.runVariants.v = [];
     }
     this.runVariants.v.push(runVariant);
-    return this;
   }
 
   variants(runVariants: string[]): void {
@@ -39,7 +38,7 @@ export class CommandDefinition {
   }
 
   variable(key: string, value: string): void {
-    if (this.vars.isUndefined()) {
+    if (typeof this.vars.v === 'undefined') {
       this.vars.v = {};
     }
     this.vars.v[key] = value;
@@ -52,7 +51,7 @@ export class CommandDefinition {
   }
 
   param(key: string, value: string): void {
-    if (this.parameters.isUndefined()) {
+    if (typeof this.parameters.v === 'undefined') {
       this.parameters.v = {};
     }
     this.parameters.v[key] = value;
