@@ -49,7 +49,7 @@ export class CommandDefinition {
   }
 
   variant(runVariant: string): CommandDefinition {
-    if (typeof this.runVariants.v === 'undefined') {
+    if (this.runVariants.isUndefined()) {
       this.runVariants.v = [];
     }
     this.runVariants.v.push(runVariant);
@@ -64,7 +64,7 @@ export class CommandDefinition {
   }
 
   variable(key: string, value: string): CommandDefinition {
-    if (typeof this.vars.v === 'undefined') {
+    if (this.vars.isUndefined()) {
       this.vars.v = {};
     }
     this.vars.v[key] = value;
@@ -79,7 +79,7 @@ export class CommandDefinition {
   }
 
   param(key: string, value: string): CommandDefinition {
-    if (typeof this.parameters.v === 'undefined') {
+    if (this.parameters.isUndefined()) {
       this.parameters.v = {};
     }
     this.parameters.v[key] = value;
