@@ -7,7 +7,10 @@ interface Env {
   [key: string]: string;
 }
 
-export class CmdExec {
+/**
+ * Base class for CmdExec and CmdExecShell.
+ */
+class BaseCmdExec {
   background = new NV<boolean>('background');
   silent = new NV<boolean>('silent');
   continueOnErr = new NV<boolean>('continue_on_err');
@@ -17,8 +20,15 @@ export class CmdExec {
   ignoreStdOut = new NV<boolean>('ignore_standard_out');
   keepEmptyArgs = new NV<boolean>('keep_empty_args');
   workingDir = new NV<string>('working_dir');
+}
+
+export class CmdExec extends BaseCmdExec {
   command = new NV<string>('command');
   bin = new NV<string>('binary');
   args = new NV<string[]>('args');
   env = new NV<Env>('env');
+}
+
+export class CmdExecShell extends BaseCmdExec {
+  script = new NV<string>('script');
 }
