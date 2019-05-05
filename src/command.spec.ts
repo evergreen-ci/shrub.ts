@@ -1,6 +1,6 @@
 import 'mocha';
 import { CommandDefinition, ExecutionType } from './command';
-import { handleOptional } from './utils';
+import { jsonReplacer } from './utils';
 
 describe('CommandDefinition', () => {
   it('should have required properties', () => {
@@ -9,6 +9,6 @@ describe('CommandDefinition', () => {
       .func('dummyFunctionName')
       .type(ExecutionType.Setup)
       .name('dummyDisplayName');
-    console.log(JSON.stringify(cmd, handleOptional));
+    console.log(JSON.stringify(cmd, jsonReplacer));
   });
 });

@@ -2,21 +2,41 @@
  * Name and Value pair. Stores the value along with its JSON name.
  */
 export class NV<T> {
-  v?: T; // shorthand for value.
+  v?: T; // "v" is shorthand for "value".
   constructor(public jsonName: string) {}
 
   isUndefined(): boolean {
-    return typeof this.v === undefined;
+    return typeof this.v === 'undefined';
   }
 }
 
 /**
- * Discard undefined properties when serializing an NV instances.
+ * Use the explicitly specified key name and discard undefined properties
+ * when serializing an NV instances.
  */
-export function handleOptional(key: string, value: any) {
-  // Don't include undefined properties.
-  if (value instanceof NV && value.isUndefined()) {
-    return undefined;
+function fixupJSONKeyName(key: string, value: any) {
+  if (value instanceof NV) {
+    // Don't include undefined properties.
+    if (value.isUndefined()) {
+      return undefined;
+    } else {
+      return { [value.jsonName]: value.v };
+    }
+  }
+  return { [key]: value };
+}
+
+interface JSONObj {
+  [key: string]: any;
+}
+
+export function jsonReplacer(key: string, value: any) {
+  if (value && typeof value === 'object') {
+    const replacement: JSONObj = {};
+    for (const k of Object.getOwnPropertyNames(value)) {
+      Object.assign(replacement, fixupJSONKeyName(k, value[k]));
+    }
+    return replacement;
   }
   return value;
 }

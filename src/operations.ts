@@ -33,4 +33,7 @@ export class CmdExecShell extends BaseCmdExec {
   script = new NV<string>('script');
 }
 
-export type Operation = CmdExec | CmdExecShell;
+export enum Operation {
+  CmdExec = 'subprocess.exec',
+  CmdExecShell = 'shell.exec',
+}
