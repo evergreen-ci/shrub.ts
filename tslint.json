@@ -1,5 +1,8 @@
 {
   "extends": "gts/tslint.json",
+  "rules": {
+    "no-any": false  // You can't write callbacks from JS with no-any enabled.
+  },
   "linterOptions": {
     "exclude": [
       "**/*.json"

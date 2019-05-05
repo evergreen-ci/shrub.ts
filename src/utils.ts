@@ -9,10 +9,7 @@ export class NV<T> {
 /**
  * Discard undefined properties when serializing an NV instances.
  */
-export function serializeReplacer(
-  key: string,
-  value: string | number | boolean
-) {
+export function serializeReplacer(key: string, value: any) {
   // Don't include undefined properties.
   if (value instanceof NV && value.v === undefined) {
     return undefined;
