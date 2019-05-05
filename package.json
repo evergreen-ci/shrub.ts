@@ -1,0 +1,35 @@
+{
+  "name": "shrub.ts",
+  "version": "1.0.0",
+  "description": "An Evergreen project generation library",
+  "scripts": {
+    "check": "gts check",
+    "clean": "gts clean",
+    "compile": "tsc -p .",
+    "fix": "gts fix",
+    "prepare": "npm run compile",
+    "pretest": "npm run compile",
+    "posttest": "npm run check"
+  },
+  "dependencies": {},
+  "engines": {
+    "node": "4.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/evergreen-ci/shrub.ts"
+  },
+  "keywords": [
+    "evergreen",
+    "mongodb"
+  ],
+  "author": "MongoDB Inc.",
+  "contributors": [
+    "Robert Guo <rob@mongodb.com> (http://zeke.sikelianos.com)"
+  ],
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "gts": "1.0.0",
+    "typescript": "3.4.5"
+  }
+}
