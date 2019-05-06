@@ -1,0 +1,55 @@
+syntax = "proto3";
+
+package shrub;
+
+import "google/protobuf/any.proto";
+import "google/protobuf/wrappers.proto";
+
+
+message Configuration {
+    map<string, CommandSequence> functions = 1;
+    repeated Task tasks = 2;
+    repeated TaskGroup task_groups = 3;
+    repeated Variant buildvariants = 4;
+    CommandSequence pre = 5;
+    CommandSequence post = 6;
+    CommandSequence timeout = 7;
+
+    // Top-level options.
+    int32 exec_timeout_secs = 8;
+    int32 batchtime = 9;
+    bool stepback = 10;
+    string command_type = 11;
+    string ignore = 12;
+}
+
+message CommandDefinition {
+    string func = 1;
+    string type = 2;
+    string display_name = 3;
+    string command = 4;
+    repeated string variants = 5;
+    int32 timeout_secs = 6;
+    map<string, google.protobuf.Any> params = 7;
+    map<string, string> vars = 8;
+}
+
+message TaskGroup {
+
+}
+
+message Variant {
+
+}
+
+message TaskDependency {
+    string name = 1;
+    string variant = 2;
+}
+
+message Task {
+    string name = 1;
+    int32 priority = 2;
+    repeated TaskDependency depends_on = 3;
+    map<string, string> env = 4;
+}
