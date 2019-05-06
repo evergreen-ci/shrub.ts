@@ -28,7 +28,7 @@ tasks:
     - func: "compile and upload to s3"
 ```
 
-You can instead use shrub to build the above config as follows:
+You can use `shrub.ts` to build the above config:
 
 ```typescript
 const c = new Configuration();
