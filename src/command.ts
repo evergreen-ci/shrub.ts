@@ -7,11 +7,11 @@ export enum ExecutionType {
   Test = 'test',
 }
 
-interface Parameters {
+export interface Parameters {
   [key: string]: string;
 }
 
-type Vars = Parameters;
+export type Vars = Parameters;
 
 export class CommandDefinition {
   functionName = new NV<string>('func');

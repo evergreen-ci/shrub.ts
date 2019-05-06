@@ -1,5 +1,7 @@
 /**
  * Name and Value pair. Stores the value along with its JSON name.
+ *
+ * TODO: add "required" argument.
  */
 export class NV<T> {
   v?: T; // "v" is shorthand for "value".
