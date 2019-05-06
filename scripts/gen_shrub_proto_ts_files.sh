@@ -4,7 +4,7 @@
 PROTOC_GEN_TS_PATH="./node_modules/.bin/protoc-gen-ts"
 
 # Directory to write generated code to (.js and .d.ts files)
-OUT_DIR="./src"
+OUT_DIR="."
 
 protoc \
     --plugin="protoc-gen-ts=${PROTOC_GEN_TS_PATH}" \
