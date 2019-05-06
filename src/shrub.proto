@@ -2,18 +2,18 @@ syntax = "proto3";
 
 package shrub;
 
-import "google/protobuf/any.proto";
+import "google/protobuf/struct.proto";
 import "google/protobuf/wrappers.proto";
 
 
 message Configuration {
-    map<string, CommandSequence> functions = 1;
+    map<string, CommandDefinition> functions = 1;
     repeated Task tasks = 2;
     repeated TaskGroup task_groups = 3;
     repeated Variant buildvariants = 4;
-    CommandSequence pre = 5;
-    CommandSequence post = 6;
-    CommandSequence timeout = 7;
+    repeated CommandDefinition pre = 5;
+    repeated CommandDefinition post = 6;
+    repeated CommandDefinition timeout = 7;
 
     // Top-level options.
     int32 exec_timeout_secs = 8;
@@ -30,16 +30,29 @@ message CommandDefinition {
     string command = 4;
     repeated string variants = 5;
     int32 timeout_secs = 6;
-    map<string, google.protobuf.Any> params = 7;
+    map<string, google.protobuf.Struct> params = 7;
     map<string, string> vars = 8;
 }
 
-message TaskGroup {
-
+message Variant {
+    string name = 1;
+    string display_name = 2;
+    int32 batchtime = 3;
+    repeated TaskSpec tasks = 4;
+    repeated string run_on = 5;
+    map<string, google.protobuf.Struct> expansions = 6;
+    repeated DisplayTaskDefinition display_tasks = 7;
 }
 
-message Variant {
+message DisplayTaskDefinition {
+    string name = 1;
+    repeated string execution_tasks = 2;
+}
 
+message TaskSpec {
+    string name = 1;
+    bool stepback = 2;
+    repeated string distro = 3;
 }
 
 message TaskDependency {
@@ -51,5 +64,16 @@ message Task {
     string name = 1;
     int32 priority = 2;
     repeated TaskDependency depends_on = 3;
-    map<string, string> env = 4;
+    repeated CommandDefinition commands  = 4;
+}
+
+message TaskGroup {
+    string name = 1;
+    int32 max_hosts = 2;
+    repeated CommandDefinition setup_group = 3;
+    repeated CommandDefinition setup_task = 4;
+    repeated string tasks = 5;
+    repeated CommandDefinition teardown_tasks = 6;
+    repeated CommandDefinition teardown_groups = 7;
+    repeated CommandDefinition timeout = 8;
 }
