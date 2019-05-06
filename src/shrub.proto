@@ -3,8 +3,8 @@ syntax = "proto3";
 package shrub;
 
 import "google/protobuf/struct.proto";
-import "google/protobuf/wrappers.proto";
-
+// Unneeded until we decide falsy values can't be removed.
+// import "google/protobuf/wrappers.proto";
 
 message Configuration {
     map<string, CommandDefinition> functions = 1;

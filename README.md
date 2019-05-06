@@ -10,7 +10,6 @@ It is especially useful for generating tasks dynamically through [the `generate.
 
 
 ## Installation
-
 watch this space
 
 
@@ -80,3 +79,8 @@ return JSON.stringify(c.toObject(), jsonReplacer);
 ```
 
 For more advanced examples, please see [the `shrub.ts` integration tests](https://github.com/guoyr/shrub.ts/tree/master/src/tests).
+
+
+## Development
+
+Run `source scripts/gen_shrub_proto_ts_files.sh` after installing protobuf's command line tool.

@@ -29,3 +29,7 @@ node_modules/
 .env.test
 
 .idea
+
+# protobuf generated files.
+src/**/*_pb.d.ts
+src/**/*_pb.js
