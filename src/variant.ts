@@ -10,17 +10,15 @@ export class TaskSpec {
     return this;
   }
 
-  stepback(): TaskSpec {
+  stepback(): void {
     this._stepback.v = true;
-    return this;
   }
 
-  distro(d: string): TaskSpec {
+  distro(d: string): void {
     if (typeof this.distros.v === 'undefined') {
       this.distros.v = [];
     }
     this.distros.v.push(d);
-    return this;
   }
 }
 
@@ -55,10 +53,10 @@ export class Variant {
   private buildName = new NV<string>('name');
   private buildDisplayName = new NV<string>('display_name');
   private batchTimeSecs = new NV<integer>('batchtime');
-  private taskSpecs = new NV<TaskSpec>('tasks');
+  private taskSpecs = new NV<TaskSpec[]>('tasks');
   private distroRunOn = new NV<string[]>('run_on');
   private _expansions = new NV<Expansions>('expansions');
-  private displayTaskSpecs = new NV<DisplayTaskDefinition>('display_tasks');
+  private displayTaskSpecs = new NV<DisplayTaskDefinition[]>('display_tasks');
 
   runOn(distro: string): void {
     if (typeof this.distroRunOn.v === 'undefined') {
@@ -77,6 +75,32 @@ export class Variant {
   expansions(exps: Expansions): void {
     for (const k of Object.getOwnPropertyNames(exps)) {
       this.expansion(k, exps[k]);
+    }
+  }
+
+  task(ts: TaskSpec): void {
+    if (typeof this.taskSpecs.v === 'undefined') {
+      this.taskSpecs.v = [];
+    }
+    this.taskSpecs.v.push(ts);
+  }
+
+  tasks(tss: TaskSpec[]): void {
+    for (const ts of tss) {
+      this.task(ts);
+    }
+  }
+
+  displayTask(dt: DisplayTaskDefinition): void {
+    if (typeof this.displayTaskSpecs.v === 'undefined') {
+      this.displayTaskSpecs.v = [];
+    }
+    this.displayTaskSpecs.v.push(dt);
+  }
+
+  displayTasks(dts: DisplayTaskDefinition[]): void {
+    for (const dt of dts) {
+      this.displayTask(dt);
     }
   }
 }
