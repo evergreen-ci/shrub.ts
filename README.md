@@ -15,7 +15,7 @@ watch this space
 
 ## Example
 
-Supposed you want to write the following project configuration (from Evergreen's wiki):
+Suppose you want to write the following project configuration (from Evergreen's wiki):
 
 ```yaml
 tasks:
