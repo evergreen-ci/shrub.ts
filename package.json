@@ -4,7 +4,6 @@
   "description": "An Evergreen project generation library",
   "files": [
     "build",
-    "src",
     "README.md"
   ],
   "scripts": {
@@ -46,9 +45,10 @@
     "mocha": "^6.1.4",
     "npm": "^6.9.0",
     "ts-node": "^8.1.0",
+    "ts-protoc-gen": "^0.9.1-pre.cbe7398",
     "typescript": "^3.4.5"
   },
   "dependencies": {
-    "ts-protoc-gen": "^0.9.1-pre.cbe7398"
+    "google-protobuf": "^3.8.0"
   }
 }
