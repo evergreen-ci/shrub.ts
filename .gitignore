@@ -30,6 +30,8 @@ node_modules/
 
 .idea
 
-# protobuf generated files.
-src/**/*_pb.d.ts
-src/**/*_pb.js
+build
+
+-# protobuf generated files.
+-src/**/*_pb.d.ts
+-src/**/*_pb.js
