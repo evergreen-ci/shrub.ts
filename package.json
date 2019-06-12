@@ -3,8 +3,7 @@
   "version": "0.1.1",
   "description": "An Evergreen project generation library",
   "files": [
-    "build",
-    "README.md"
+    "build/**/*"
   ],
   "scripts": {
     "check": "gts check",
@@ -16,16 +15,11 @@
     "posttest": "npm run check",
     "test": "mocha -r ts-node/register src/**/*.spec.ts src/tests/**"
   },
-  "main": "build/src/shrub_pb.js",
-  "types": "build/src/shrub_pb.d.ts",
+  "main": "build/index.js",
+  "types": "build/index.d.ts",
   "engines": {
     "node": "6.11.3"
   },
-  "files": [
-    "build/**/*"
-  ],
-  "main": "build/index.js",
-  "types": "build/index.d.ts",
   "repository": {
     "type": "git",
     "url": "https://github.com/evergreen-ci/shrub.ts"
