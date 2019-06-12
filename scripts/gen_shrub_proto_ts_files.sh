@@ -11,3 +11,5 @@ protoc \
     --js_out="import_style=commonjs,binary:${OUT_DIR}" \
     --ts_out="${OUT_DIR}" \
     src/shrub.proto
+
+rsync -R $(find src -name "shrub_pb.*") build
