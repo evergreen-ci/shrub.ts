@@ -59,7 +59,7 @@ export function jsonReplacer(key: string, value: any) {
         }
       } else {
         // Copy the value verbatim for non-arrays.
-        replacement[k] = value[k];
+        replacement[snakeKey] = value[k];
       }
     }
     return replacement;
