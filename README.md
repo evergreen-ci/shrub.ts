@@ -8,6 +8,7 @@
 `shrub.ts` is a library for programatically building [Evergreen project configurations](https://github.com/evergreen-ci/evergreen/wiki/Project-Files).
 It is especially useful for generating tasks dynamically through [the `generate.tasks` command](https://github.com/evergreen-ci/evergreen/wiki/Project-Commands#generate-tasks)
 
+NOTE: this library has historically been community maintained but has fallen out of date. 
 
 ## Installation
 watch this space
