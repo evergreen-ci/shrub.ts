@@ -36,13 +36,16 @@
     "@types/mocha": "^10.0.7",
     "@types/node": "^22.1.0",
     "chai": "^4.3.10",
+    "eslint": "^9.8.0",
+    "globals": "^15.9.0",
     "gts": "^5.3.1",
     "install": "^0.13.0",
     "mocha": "^10.7.3",
     "npm": "^10.8.2",
     "ts-node": "^10.9.2",
     "ts-protoc-gen": "^0.15.0",
-    "typescript": "^5.5.4"
+    "typescript": "^5.5.4",
+    "typescript-eslint": "^8.0.1"
   },
   "dependencies": {
     "google-protobuf": "^3.21.4"
