@@ -26,9 +26,6 @@
     "mongodb"
   ],
   "author": "MongoDB Inc.",
-  "contributors": [
-    "Robert Guo <rob@mongodb.com>"
-  ],
   "license": "Apache-2.0",
   "devDependencies": {
     "@types/chai": "^4.3.17",
