@@ -84,4 +84,12 @@ For more advanced examples, please see [the `shrub.ts` integration tests](https:
 
 ## Development
 
-Run `source scripts/gen_shrub_proto_ts_files.sh` after installing protobuf's command line tool.
+Install `protoc`: https://grpc.io/docs/protoc-installation/.
+
+```
+npm install
+```
+
+```
+npm test
+```

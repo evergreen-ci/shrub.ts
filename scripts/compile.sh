@@ -1,10 +1,8 @@
 #!/usr/bin/env bash
 
-set -evo pipefail
-
 mkdir -p build
 
-source scripts/gen_shrub_proto_ts_files.sh
+. scripts/gen_shrub_proto_ts_files.sh
 
 # Compile TS files.
 tsc --build
