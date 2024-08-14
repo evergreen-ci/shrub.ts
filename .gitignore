@@ -30,7 +30,7 @@ node_modules/
 
 .idea
 
-build
+- build # EXPERIMENTAL
 
 # protobuf generated files.
 src/**/*_pb.d.ts
