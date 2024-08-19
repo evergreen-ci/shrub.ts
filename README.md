@@ -1,14 +1,18 @@
+# DEPRECATED
+[![No Maintenance Intended](http://unmaintained.tech/badge.svg)](http://unmaintained.tech/)
+
+This utility is no longer supported or maintained.
+
+See instead [shrub.py](https://github.com/evergreen-ci/shrub.py) and [shrub-rs](https://github.com/evergreen-ci/shrub-rs).
+
 # shrub.ts – Generate Evergreen Project Configs in TypeScript and JavaScript
 
 [![Code Style: Google](https://img.shields.io/badge/code%20style-google-blueviolet.svg)](https://github.com/google/gts)
-
 
 ## Overview
 
 `shrub.ts` is a library for programatically building [Evergreen project configurations](https://github.com/evergreen-ci/evergreen/wiki/Project-Files).
 It is especially useful for generating tasks dynamically through [the `generate.tasks` command](https://github.com/evergreen-ci/evergreen/wiki/Project-Commands#generate-tasks)
-
-NOTE: this library has historically been community maintained but has fallen out of date. 
 
 ## Installation
 watch this space
